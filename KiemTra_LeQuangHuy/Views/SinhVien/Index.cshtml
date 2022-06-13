@@ -1,9 +1,13 @@
 ﻿@model IEnumerable<KiemTra_LeQuangHuy.Models.SinhVien>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml"; }
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <h2>Index</h2>
-<table border="1px">
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
     <tr>
         <th>Mã SV</th>
         <th>Họ tên</th>
@@ -14,20 +18,20 @@
         <th></th>
     </tr> @foreach (var item in Model)
     {
-        <tr>
-            <td>@item.MaSV</td>
-            <td>@item.HoTen</td>
-            <td>@item.GioiTinh</td>
-            <td>@item.NgaySinh</td>
-            <td>
-                <img src="@item.Hinh" width="200" title="images" />
-            </td>
-            <td>@item.MaNganh</td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.MaSV }) |
-                @Html.ActionLink("Detail", "Detail", new { id = item.MaSV }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.MaSV })
-            </td>
-        </tr>
+<tr>
+    <td>@Html.DisplayFor(modelItem => item.MaSV)</td>
+    <td>@Html.DisplayFor(modelItem => item.HoTen)</td>
+    <td>@Html.DisplayFor(modelItem => item.GioiTinh)</td>
+    <td>@Html.DisplayFor(modelItem => item.NgaySinh)</td>
+    <td>
+        <img src="@item.Hinh" width="300" alt="Images" />
+    </td>
+    <td>@Html.DisplayFor(modelItem => item.MaNganh)</td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.MaSV }) |
+        @Html.ActionLink("Detail", "Detail", new { id = item.MaSV }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.MaSV })
+    </td>
+</tr>
     }
-</table> @Html.ActionLink("Create", "Create", "SinhVien")
+</table>
